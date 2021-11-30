@@ -1,9 +1,15 @@
 <template>
   <div>
-    <h2>Asana クローン</h2>
+    <h2>Asana Clone</h2>
     <div class="addArea">
       <input type="text" name="addName" id="addName" />
       <button id="addButton">追加</button>
+    </div>
+    <div class="Filter">
+      <button class="button button--gray is-active">全て</button>
+      <button class="button button--gray">作業前</button>
+      <button class="button button--gray">作業中</button>
+      <button class="button button--gray">完了</button>
     </div>
     <table class="Lists">
       <thead>
@@ -15,10 +21,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>テスト</td>
-          <td>2020-04-30 17:00</td>
-          <td><button class="button button--yet">作業前</button></td>
+        <tr v-for="(item, index) in todos" :key="index">
+          <td>{{ item.content }}</td>
+          <td>{{ item.created }}</td>
+          <td>
+            <button class="button button--yet">{{ item.state }}</button>
+          </td>
           <td><button class="button button--delete">削除</button></td>
         </tr>
       </tbody>
@@ -27,5 +35,17 @@
 </template>
 
 <script>
-export default {}
+import { mapState } from 'vuex'
+
+export default {
+  data() {
+    return {
+      content: '',
+    }
+  },
+
+  computed: {
+    ...mapState(['todos']),
+  },
+}
 </script>
