@@ -2,8 +2,8 @@
   <div>
     <h2>Asana Clone</h2>
     <div class="addArea">
-      <input type="text" name="addName" id="addName" />
-      <button id="addButton">追加</button>
+      <input v-model="content" type="text" name="addName" id="addName" />
+      <button @click="insert" id="addButton">追加</button>
     </div>
     <div class="Filter">
       <button class="button button--gray is-active">全て</button>
@@ -27,7 +27,11 @@
           <td>
             <button class="button button--yet">{{ item.state }}</button>
           </td>
-          <td><button class="button button--delete">削除</button></td>
+          <td>
+            <button class="button button--delete" @click="remove(item)">
+              削除
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -43,7 +47,17 @@ export default {
       content: '',
     }
   },
-
+  methods: {
+    insert() {
+      if (this.content != '') {
+        this.$store.commit('insert', { content: this.content })
+        this.content = ''
+      }
+    },
+    remove(todo) {
+      this.$store.commit('remove', todo)
+    },
+  },
   computed: {
     ...mapState(['todos']),
   },
