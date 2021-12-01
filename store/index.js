@@ -8,6 +8,11 @@ const createStore = () => {
         {content: 'コーディング', created: '2020-04-30 16:00', state: '作業中'},
         {content: '環境構築', created: '2020-04-30 15:30', state: '完了'}
       ],
+       sections: [
+        {title: '4/15~5/15のタスク'},
+        {title: '6/15~7/15のタスク'},
+        {title: '8/15~9/15のタスク'},
+      ],
       option:[
         {id:0 ,label:'作業前'},
         {id:1 ,label:'作業中'},

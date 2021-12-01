@@ -3,7 +3,8 @@
     <h2>Asana Clone</h2>
     <div class="addArea">
       <input v-model="content" type="text" name="addName" id="addName" />
-      <button @click="insert" id="addButton">追加</button>
+      <button @click="insert" id="addButton">セクションを追加</button>
+      <button @click="insert" id="addButton">タスクを追加</button>
     </div>
     <div class="Filter">
       <button class="button button--gray is-active" @click="flag_reset">
@@ -41,6 +42,7 @@
             </button>
           </td>
         </tr>
+        <tr v-for=""></tr>
       </tbody>
     </table>
   </div>
